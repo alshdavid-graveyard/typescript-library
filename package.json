@@ -1,0 +1,56 @@
+{
+  "name": "@rokt/lib-template",
+  "version": "1.0.0",
+  "author": "Widgets Team",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -r -f build node_modules",
+    "lint": "tslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "tslint --fix \"src/**/*.{ts,tsx}\"",
+    "start": "npm run build:watch && echo \"--\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js,tsx,jsx}"
+    ],
+    "coverageDirectory": "reports/coverage",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/../../mocks/jestFileMock.js",
+      "\\.(css|less)$": "<rootDir>/../../mocks/jestStyleMock.js",
+      "^lodash-es$": "lodash",
+      "^~/(.*)$": "<rootDir>/src/$1"
+    },
+    "reporters": [
+      "default"
+    ],
+    "testRegex": ".*\\.spec\\.(jsx?|tsx?)$",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es)"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.17",
+    "jest": "^24.8.0",
+    "lodash-es": "^4.17.15",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.7.2"
+  }
+}
